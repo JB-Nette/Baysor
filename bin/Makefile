@@ -13,7 +13,7 @@ clean:
 	rm -rf $(JULIA_ARCHIVE) $(JULIA_DIR) $(JULIA_DEPOT_DIR) $(SEGMENTATION_EXECUTABLE)
 
 $(SEGMENTATION_EXECUTABLE): $(JULIA_SYS_IMAGE)
-	$(JULIA_EXEC) --sysimage=$(JULIA_DIR)/../BaysorSysimage.so -e ""
+	$(JULIA_EXEC) --sysimage=$(JULIA_DIR)/../BaysorSysimage.so -J ""
 	printf '#! $(JULIA_EXEC) --sysimage=$(JULIA_DIR)/../BaysorSysimage.so\n\nENV["JULIA_DEPOT_PATH"]="$(JULIA_DEPOT_DIR)"\nimport Baysor\nBaysor.run_cli()' >> $(SEGMENTATION_EXECUTABLE)
 	chmod +x $(SEGMENTATION_EXECUTABLE)
 
